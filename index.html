@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Route | Next-Gen Route Optimization</title>
+    <meta name="description"
+        content="Find the shortest route between cities using Dijkstra's and A* algorithms. Visual route optimization with instant download.">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <!-- ═══ 3D INTRO EXPERIENCE ═══ -->
+    <div id="intro-overlay" class="intro-overlay">
+        <div id="intro-canvas-container"></div>
+        <div class="intro-content">
+            <h1 class="intro-title">SMART<span>ROUTE</span></h1>
+            <p class="intro-subtitle">Advanced Pathfinding Engine</p>
+            <button id="enterAppBtn" class="btn-intro">
+                <span class="btn-intro-text">INITIALIZE SYSTEM</span>
+                <span class="btn-intro-glow"></span>
+            </button>
+        </div>
+    </div>
+
+    <div id="canvas-container"></div>
+
+    <!-- ═══ NAVIGATION ═══ -->
+    <nav class="glass" id="mainNav">
+        <div class="logo">SMART<span>ROUTE</span></div>
+        <div class="menu-toggle" id="mobile-menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#landing-hero">Home</a></li>
+            <li><a href="#features">Features</a></li>
+            <li><a href="#solutions">How It Works</a></li>
+            <li><button class="btn-primary" id="navGetStarted">Get Started</button></li>
+        </ul>
+    </nav>
+
+    <main>
+        <!-- ═══ LANDING: HERO ═══ -->
+        <section class="hero" id="landing-hero">
+            <div class="hero-content">
+                <h1 class="reveal">Intelligence in <span>Motion</span></h1>
+                <p class="reveal">The most advanced route optimization engine ever built. Powered by Dijkstra's &amp; A*
+                    algorithms for blazing-fast shortest paths.</p>
+                <div class="hero-btns reveal">
+                    <button class="btn-primary" id="heroGetStarted">Get Started</button>
+                    <button class="btn-secondary" id="heroLearnMore">Learn More</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══ LANDING: FEATURES ═══ -->
+        <section id="features" class="features">
+            <div class="section-header reveal">
+                <h2>Why Choose Smart Route?</h2>
+                <p>Built for precision routing with proven algorithms.</p>
+            </div>
+            <div class="grid">
+                <div class="card reveal">
+                    <div class="icon">⚡</div>
+                    <h3>Dijkstra's Algorithm</h3>
+                    <p>The gold standard for shortest path. Guarantees the optimal route by exploring all possible paths
+                        systematically.</p>
+                </div>
+                <div class="card reveal">
+                    <div class="icon">🧠</div>
+                    <h3>A* Algorithm</h3>
+                    <p>Heuristic-powered pathfinding. Faster than Dijkstra's by intelligently estimating distances to
+                        the goal.</p>
+                </div>
+                <div class="card reveal">
+                    <div class="icon">📥</div>
+                    <h3>Instant Download</h3>
+                    <p>Get your optimized route as a high-quality JPG image. Share, print, or save for offline
+                        navigation.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══ LANDING: HOW IT WORKS ═══ -->
+        <section id="solutions" class="how-it-works">
+            <div class="section-header reveal">
+                <h2>Precision in Every Path</h2>
+                <p>Our three-step process ensures peak efficiency.</p>
+            </div>
+            <div class="steps-grid">
+                <div class="step reveal">
+                    <div class="step-num">01</div>
+                    <h3>Enter Details</h3>
+                    <p>Provide your name, source city, and destination city in our simple form.</p>
+                </div>
+                <div class="step reveal">
+                    <div class="step-num">02</div>
+                    <h3>Choose Algorithm</h3>
+                    <p>Select Dijkstra's or A* algorithm based on your preference for accuracy or speed.</p>
+                </div>
+                <div class="step reveal">
+                    <div class="step-num">03</div>
+                    <h3>Download Route</h3>
+                    <p>View the shortest path visualized on a map and download it as a JPG instantly.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══ LANDING: CTA ═══ -->
+        <section class="cta reveal">
+            <div class="cta-card glass">
+                <h2>Ready to find your shortest route?</h2>
+                <p>Enter your source and destination to get an optimized route powered by real algorithms.</p>
+                <div class="hero-btns">
+                    <button class="btn-primary" id="ctaGetStarted">Get Started Now</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══ ROUTE PLANNER SECTION ═══ -->
+        <section id="route-planner" class="route-planner-section">
+            <div class="planner-container">
+                <div class="planner-header reveal">
+                    <h2>Plan Your <span>Route</span></h2>
+                    <p>Enter your details below and we'll find the shortest path for you.</p>
+                </div>
+
+                <div class="planner-form-wrapper reveal">
+                    <form id="routeForm" class="route-form glass">
+                        <div class="form-group">
+                            <label for="userName">Your Name</label>
+                            <input type="text" id="userName" placeholder="e.g. Vikram" required>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="sourceState">Source State</label>
+                                <select id="sourceState" required>
+                                    <option value="" disabled selected>Select state</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="sourceCity">Source District</label>
+                                <select id="sourceCity" required disabled>
+                                    <option value="" disabled selected>First select state</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="destState">Destination State</label>
+                                <select id="destState" required>
+                                    <option value="" disabled selected>Select state</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="destCity">Destination District</label>
+                                <select id="destCity" required disabled>
+                                    <option value="" disabled selected>First select state</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Algorithm</label>
+                            <div class="algo-toggle">
+                                <button type="button" class="algo-btn active" data-algo="dijkstra" id="btnDijkstra">
+                                    <span class="algo-icon">⚡</span>
+                                    Dijkstra's
+                                </button>
+                                <button type="button" class="algo-btn" data-algo="astar" id="btnAstar">
+                                    <span class="algo-icon">🧠</span>
+                                    A* Search
+                                </button>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn-primary btn-find" id="findRouteBtn">
+                            <span class="btn-text">Find Shortest Route</span>
+                            <span class="btn-loader" style="display:none;">
+                                <span class="spinner-small"></span> Calculating...
+                            </span>
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Route Result -->
+                <div id="routeResult" class="route-result" style="display:none;">
+                    <div class="result-header reveal">
+                        <h3>Shortest Route Found!</h3>
+                        <div class="result-meta">
+                            <span class="result-badge" id="resultAlgo">Dijkstra's</span>
+                            <span class="result-badge accent" id="resultDist">0 km</span>
+                        </div>
+                    </div>
+                    <div class="result-path-text reveal" id="resultPathText"></div>
+                    <div class="canvas-wrapper reveal" id="route-3d-container"
+                        style="position:relative; width: 100%; height: 700px; background: #0a0a0f;">
+                        <!-- Three.js Scene will be injected here -->
+                    </div>
+                    <button class="btn-primary btn-download" id="downloadBtn">
+                        📥 Download Route as JPG
+                    </button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ═══ FOOTER ═══ -->
+    <footer class="reveal">
+        <div class="footer-content">
+            <div class="logo">SMART<span>ROUTE</span></div>
+            <p>© 2026 Smart Route Inc. All rights reserved.</p>
+            <div class="socials">
+                <a href="#">TW</a>
+                <a href="#">LN</a>
+                <a href="#">GH</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Three.js and GSAP CDNs -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.160.0/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="district.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
